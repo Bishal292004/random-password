@@ -3,8 +3,9 @@ const passwordBox = document.getElementById("password");
 //All possible alphabets and symbols which will be usd in password
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerCase = "abcdefghijklmnopqrstuvwxyz";
-const symbol = "!@#$%^&*/?{}";
-const allChar = upperCase + lowerCase + symbol;
+const symbol = "!@#$%.&*/?";
+const number = "1234567890";
+const allChar = upperCase + lowerCase + symbol + number;
 
 //will generate a random integer between the given interval min - max
 function randomIntLength(min, max){
@@ -22,11 +23,28 @@ function createPassword(){
     password += upperCase[Math.floor(Math.random() * upperCase.length)];
     password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
     password += symbol[Math.floor(Math.random() * symbol.length)];
+    password += number[Math.floor(Math.random()* number.length)];
 
     while(length>password.length){// if password length is not the desired, this will add more randon character
         password += allChar[Math.floor(Math.random() * allChar.length)];
     }
-    return password;
+    // the problem with this is that we can precict that that the 1st alphabet will be upper case , 2nd will be lowercase, 3rd will be a special character and 4th will be a number after that we can't predict.
+
+    //function to make the password more complex by sfuffleing the characters randomly, this will elliminate the little bit risk of guessing the password
+    
+    function shuffle(str){
+        const chars = str.split('');
+        for(let i = chars.length-1; i>0; i--){
+            const j = Math.floor(Math.random()* (i+1));
+            [chars[i], chars[j]] = [chars[j], chars[i]];
+        }
+        return chars.join('');
+    }
+    const newPassword = shuffle(password);
+    console.log(password);// to compare with the new password formed bellow
+    console.log(newPassword);// to compare with old password
+
+    return newPassword;
 }
 
 // function to display the randomly generated password in the input field
