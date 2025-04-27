@@ -1,6 +1,6 @@
 const passwordBox = document.getElementById("password");
 
-//All possible alphabets and symbols which will be usd in password
+//All possible alphabets, numbers and symbols which will be usd in password
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const symbol = "!@#$%.&*/?";
