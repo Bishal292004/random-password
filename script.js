@@ -7,7 +7,7 @@ const symbol = "!@#$%.&*/?";
 const number = "1234567890";
 const allChar = upperCase + lowerCase + symbol + number;
 
-//will generate a random integer between the given interval min - max
+//will generate a random integer between the given interval min - max, that will be size/length of the password
 function randomIntLength(min, max){
     int = Math.floor(Math.random()* (max - min + 1) + min);
     return int;
